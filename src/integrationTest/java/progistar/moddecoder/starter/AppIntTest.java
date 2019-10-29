@@ -22,7 +22,7 @@ class AppIntTest {
     URL sam = classLoader.getResource("PDAC005-D.sort.dedup.realigned.recal.sam");
     URL bed = classLoader.getResource("SAAVs.bed");
     URL tsv = classLoader.getResource("PDAC_SAAV.tsv");
-    URL expectedStdout = classLoader.getResource("stdout.log");
+    URL expectedStdout = classLoader.getResource("expected_stdout.txt");
 
     assert sam != null;
     assert bed != null;
