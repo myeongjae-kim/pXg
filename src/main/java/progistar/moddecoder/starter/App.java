@@ -21,9 +21,9 @@ public class App {
 
 	public static void main(String[] args) throws IOException {
 
-		SAM sam = new SAM("C:\\Users\\progi\\Desktop\\MODDecoder\\PDAC005-D.sort.dedup.realigned.recal.sam");
-		BED bed = new BED("C:\\Users\\progi\\Desktop\\MODDecoder\\SAAVs.bed", 0);
-		ArrayList<MODdecoder> modRes = readModRes("C:\\Users\\progi\\Desktop\\MODDecoder\\PDAC_SAAV.tsv");
+		SAM sam = new SAM(args[1]);
+		BED bed = new BED(args[2], 0);
+		ArrayList<MODdecoder> modRes = readModRes(args[3]);
 		linkBEDtoRES(bed, modRes);
 		linkSAMtoBED(bed, sam);
 		getMODReads(modRes);

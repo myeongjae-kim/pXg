@@ -1,5 +1,6 @@
 package progistar.moddecoder.data;
 
+import java.net.URL;
 import static org.assertj.core.api.BDDAssertions.then;
 import org.junit.jupiter.api.Test;
 
