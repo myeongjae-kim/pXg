@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id "io.freefair.lombok" version "4.0.1"
     id "com.github.johnrengelman.shadow" version "5.1.0"
+    id 'jacoco'
+    id 'checkstyle'
 }
 
 group 'progistar'
@@ -27,6 +29,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    afterEvaluate {
+        getClassDirectories().setFrom(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['**/*Application*', '**/*Config*'])
+        })
+    }
+
+    dependsOn test
 }
 
 jar {
@@ -56,3 +68,10 @@ task integrationTest(type: Test) {
     useJUnitPlatform()
 }
 check.dependsOn integrationTest
+
+task checkstyleAll(type: Test) {
+    group = 'verification'
+}
+checkstyleAll.dependsOn checkstyleMain
+checkstyleAll.dependsOn checkstyleTest
+checkstyleAll.dependsOn checkstyleIntegrationTest
